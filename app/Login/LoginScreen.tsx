@@ -28,8 +28,8 @@ const LoginScreen = () => {
 
   const navigation = useNavigation<LoginScreenNavigationProp>();
 
-  const [userNameOrEmail, setUserNameOrEmail] = useState('VishalBhimpor');
-  const [password, setPassword] = useState('vishal123');
+  const [userNameOrEmail, setUserNameOrEmail] = useState('');
+  const [password, setPassword] = useState('');
   const passwordRef = useRef<TextInput>(null);
   const [errors, setErrors] = useState({emailOrUsername: '', password: ''});
   const [isLoading, setIsLoading] = useState(false);

@@ -29,7 +29,6 @@ const NoteAddScreen = () => {
   const [description, setDescription] = useState(
     existNote ? existNote.description : '',
   );
-  const user = route.params?.user;
   const [error, setError] = useState({titleError: '', descError: ''});
   const navigation = useNavigation();
 

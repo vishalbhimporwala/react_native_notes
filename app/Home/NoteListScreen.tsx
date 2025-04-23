@@ -36,7 +36,6 @@ const NoteListScreen = () => {
   const handleAddNote = async () => {
     if (user) {
       navigation.navigate('NoteAdd', {
-        user,
         onNoteAdded: (newNote: Note) => {
           setNoteList(prevList => [newNote, ...prevList]);
         },
@@ -52,7 +51,6 @@ const NoteListScreen = () => {
   const handleUpdateNote = async (note: Note) => {
     if (user) {
       navigation.navigate('NoteAdd', {
-        user,
         note,
         onUpdateNote: (updatedNote: Note) => {
           setNoteList(prevList =>
