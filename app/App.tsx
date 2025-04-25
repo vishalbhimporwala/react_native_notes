@@ -3,12 +3,13 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React, {useEffect, useState} from 'react';
 import {ActivityIndicator, StyleSheet, View} from 'react-native';
 
-import LoginScreen from './Login/LoginScreen';
 import NoteListScreen from './Home/NoteListScreen';
 import {RootStackParamList} from './Navigation/types';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import LinearGradient from 'react-native-linear-gradient';
 import NoteAddScreen from './Home/NoteAddScreen';
+import LoginScreen from './Auth/LoginScreen';
+import RegisterScreen from './Auth/RegisterScreen';
 
 function App(): React.JSX.Element {
   const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -50,6 +51,12 @@ function App(): React.JSX.Element {
         <Stack.Screen
           name="Login"
           component={LoginScreen}
+          options={{headerShown: false}}
+        />
+
+        <Stack.Screen
+          name="Register"
+          component={RegisterScreen}
           options={{headerShown: false}}
         />
 

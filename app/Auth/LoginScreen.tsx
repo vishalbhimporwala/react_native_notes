@@ -21,12 +21,9 @@ import {RootStackParamList} from '../Navigation/types';
 import {AxiosError} from 'axios';
 
 const LoginScreen = () => {
-  type LoginScreenNavigationProp = NativeStackNavigationProp<
-    RootStackParamList,
-    'NoteList'
-  >;
+  type ScreenNavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
-  const navigation = useNavigation<LoginScreenNavigationProp>();
+  const navigation = useNavigation<ScreenNavigationProp>();
 
   const [userNameOrEmail, setUserNameOrEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -83,7 +80,8 @@ const LoginScreen = () => {
           'login response headers : ',
           await AsyncStorage.getItem('accessToken'),
         );
-        navigation.reset({index: 0, routes: [{name: 'NoteList'}]});
+        navigation.replace('NoteList');
+        // navigation.reset({index: 0, routes: [{name: 'NoteList'}]});
       }
     } catch (error) {
       const axiosError = error as AxiosError;
@@ -144,7 +142,10 @@ const LoginScreen = () => {
             )}
           </TouchableOpacity>
 
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('Register');
+            }}>
             <Text style={styles.forgotText}>Register</Text>
           </TouchableOpacity>
         </View>
