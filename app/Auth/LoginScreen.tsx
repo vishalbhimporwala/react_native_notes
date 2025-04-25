@@ -19,6 +19,7 @@ import {
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../Navigation/types';
 import {AxiosError} from 'axios';
+import {ErrorModel} from '../models/errorModel';
 
 const LoginScreen = () => {
   type ScreenNavigationProp = NativeStackNavigationProp<RootStackParamList>;
@@ -85,7 +86,11 @@ const LoginScreen = () => {
       }
     } catch (error) {
       const axiosError = error as AxiosError;
-      const newErrors = {emailOrUsername: '', password: axiosError.message};
+      const errorModel = axiosError.response?.data as ErrorModel;
+      const newErrors = {
+        emailOrUsername: '',
+        password: errorModel.data.message,
+      };
       setErrors(newErrors);
       console.error('Login error : ', axiosError);
     } finally {
